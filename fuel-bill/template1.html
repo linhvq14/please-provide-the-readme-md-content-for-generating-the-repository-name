@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate professional fuel bills and receipts quickly and securely">
+    <title>Fuel Bill Generator - Online Bill Generator</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for fuel bill page */
+        .fuel-bill-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .form-group input.error,
+        .form-group select.error,
+        .form-group textarea.error {
+            border-color: #ef4444;
+        }
+
+        .field-error {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .bill-preview {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .bill-preview.active {
+            display: block;
+        }
+
+        .bill-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .bill-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .bill-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .bill-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bill-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 5px 0;
+        }
+
+        .bill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .bill-total {
+            border-top: 2px solid #e5e7eb;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .bill-total .bill-item {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .bill-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html" class="logo">Bill Generator</a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">Bills</a></li>
+                    <li><a href="#" class="nav-link">About</a></li>
+                    <li><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="fuel-bill-section">
+            <div class="container">
+                <div style="padding: 40px 0;">
+                    <h1 class="section-title">Fuel Bill Generator</h1>
+                    <p class="section-subtitle">Generate professional fuel bills and receipts with accurate mileage and cost information</p>
+                    
+                    <!-- Fuel Bill Form -->
+                    <div class="fuel-bill-form">
+                        <h2 style="margin-bottom: 30px; color: #1f2937;">Enter Fuel Bill Details</h2>
+                        <form id="fuelBillForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="billDate">Bill Date *</label>
+                                    <input type="date" id="billDate" name="billDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="billNumber">Bill Number *</label>
+                                    <input type="text" id="billNumber" name="billNumber" placeholder="FB-001" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="vehicleNumber">Vehicle Number *</label>
+                                    <input type="text" id="vehicleNumber" name="vehicleNumber" placeholder="MH-01-AB-1234" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="driverName">Driver Name *</label>
+                                    <input type="text" id="driverName" name="driverName" placeholder="John Doe" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fuelType">Fuel Type *</label>
+                                    <select id="fuelType" name="fuelType" required>
+                                        <option value="">Select Fuel Type</option>
+                                        <option value="Petrol">Petrol</option>
+                                        <option value="Diesel">Diesel</option>
+                                        <option value="CNG">CNG</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fuelQuantity">Fuel Quantity (Liters) *</label>
+                                    <input type="number" id="fuelQuantity" name="fuelQuantity" placeholder="50" step="0.01" min="0" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="pricePerLiter">Price per Liter (₹) *</label>
+                                    <input type="number" id="pricePerLiter" name="pricePerLiter" placeholder="100.50" step="0.01" min="0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="totalAmount">Total Amount (₹)</label>
+                                    <input type="number" id="totalAmount" name="totalAmount" placeholder="5025.00" step="0.01" min="0" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="previousReading">Previous Odometer Reading (km)</label>
+                                    <input type="number" id="previousReading" name="previousReading" placeholder="10000" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="currentReading">Current Odometer Reading (km)</label>
+                                    <input type="number" id="currentReading" name="currentReading" placeholder="10500" min="0">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fuelStation">Fuel Station Name</label>
+                                <input type="text" id="fuelStation" name="fuelStation" placeholder="Indian Oil Petrol Pump">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" name="location" placeholder="Mumbai, Maharashtra">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="remarks">Remarks</label>
+                                <textarea id="remarks" name="remarks" rows="3" placeholder="Additional notes or comments"></textarea>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary">Generate Bill</button>
+                                <button type="reset" class="btn btn-secondary">Clear Form</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Bill Preview -->
+                    <div class="bill-preview" id="billPreview">
+                        <div class="bill-header">
+                            <h2 class="bill-title">FUEL BILL</h2>
+                            <p>Bill No: <span id="previewBillNumber"></span> | Date: <span id="previewBillDate"></span></p>
+                        </div>
+
+                        <div class="bill-details">
+                            <div class="bill-section">
+                                <h4>Vehicle Details</h4>
+                                <div class="bill-item">
+                                    <span>Vehicle Number:</span>
+                                    <span id="previewVehicleNumber"></span>
+                                </div>
+                                <div class="bill-item">
+                                    <span>Driver Name:</span>
+                                    <span id="previewDriverName"></span>
+                                </div>
+                                <div class="bill-item">
+                                    <span>Previous Reading:</span>
+                                    <span id="previewPreviousReading"></span>
+                                </div>
+                                <div class="bill-item">
+                                    <span>Current Reading:</span>
+                                    <span id="previewCurrentReading"></span>
+                                </div>
+                                <div class="bill-item">
+                                    <span>Distance Traveled:</span>
+                                    <span id="previewDistance"></span>
+                                </div>
+                            </div>
+
+                            <div class="bill-section">
+                                <h4>Fuel Details</h4>
+                                <div class="bill-item">
+                                    <span>Fuel Type:</span>
+                                    <span id="previewFuelType"></span>
+                                </div>
+                                <div class="bill-item">
+                                    <span>Quantity:</span>
+                                    <span id="previewFuelQuantity"></span>
+                                </div>
+                                <div class="bill-item">
+                                    <span>Price per Liter:</span>
+                                    <span id="previewPricePerLiter"></span>
+                                </div>
+                                <div class="bill-item">
+                                    <span>Fuel Station:</span>
+                                    <span id="previewFuelStation"></span>
+                                </div>
+                                <div class="bill-item">
+                                    <span>Location:</span>
+                                    <span id="previewLocation"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bill-total">
+                            <div class="bill-item">
+                                <span>Total Amount:</span>
+                                <span id="previewTotalAmount"></span>
+                            </div>
+                        </div>
+
+                        <div class="bill-section" style="margin-top: 20px;">
+                            <h4>Remarks</h4>
+                            <p id="previewRemarks" style="margin-top: 10px; color: #6b7280;"></p>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn btn-primary" onclick="downloadBill()">Download PDF</button>
+                            <button class="btn btn-secondary" onclick="printBill()">Print Bill</button>
+                            <button class="btn btn-secondary" onclick="editBill()">Edit Bill</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo" style="color: white; margin-bottom: 20px;">Bill Generator</div>
+                    <p>© Midpoint Solutions Pvt Ltd.</p>
+                    <p>All rights reserved 2025</p>
+                    <p class="made-in-india">Made with ❤️ in India</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="#">All Bills</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Fuel Bill specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFuelBillForm();
+        });
+
+        function setupFuelBillForm() {
+            const form = document.getElementById('fuelBillForm');
+            const fuelQuantity = document.getElementById('fuelQuantity');
+            const pricePerLiter = document.getElementById('pricePerLiter');
+            const totalAmount = document.getElementById('totalAmount');
+            const previousReading = document.getElementById('previousReading');
+            const currentReading = document.getElementById('currentReading');
+
+            // Auto-calculate total amount
+            function calculateTotal() {
+                const quantity = parseFloat(fuelQuantity.value) || 0;
+                const price = parseFloat(pricePerLiter.value) || 0;
+                const total = quantity * price;
+                totalAmount.value = total.toFixed(2);
+            }
+
+            fuelQuantity.addEventListener('input', calculateTotal);
+            pricePerLiter.addEventListener('input', calculateTotal);
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (validateFuelBillForm()) {
+                    generateBillPreview();
+                }
+            });
+
+            // Set default date to today
+            document.getElementById('billDate').valueAsDate = new Date();
+            
+            // Generate random bill number
+            document.getElementById('billNumber').value = 'FB-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        }
+
+        function validateFuelBillForm() {
+            const form = document.getElementById('fuelBillForm');
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    showFieldError(field, 'This field is required');
+                    isValid = false;
+                } else {
+                    clearFieldError(field);
+                }
+            });
+
+            // Additional validations
+            const currentReading = parseFloat(document.getElementById('currentReading').value);
+            const previousReading = parseFloat(document.getElementById('previousReading').value);
+
+            if (currentReading && previousReading && currentReading <= previousReading) {
+                showFieldError(document.getElementById('currentReading'), 'Current reading must be greater than previous reading');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function generateBillPreview() {
+            const formData = new FormData(document.getElementById('fuelBillForm'));
+            const data = Object.fromEntries(formData);
+
+            // Populate preview
+            document.getElementById('previewBillNumber').textContent = data.billNumber;
+            document.getElementById('previewBillDate').textContent = formatDate(data.billDate);
+            document.getElementById('previewVehicleNumber').textContent = data.vehicleNumber;
+            document.getElementById('previewDriverName').textContent = data.driverName;
+            document.getElementById('previewFuelType').textContent = data.fuelType;
+            document.getElementById('previewFuelQuantity').textContent = data.fuelQuantity + ' L';
+            document.getElementById('previewPricePerLiter').textContent = '₹' + data.pricePerLiter;
+            document.getElementById('previewTotalAmount').textContent = '₹' + data.totalAmount;
+            document.getElementById('previewFuelStation').textContent = data.fuelStation || 'N/A';
+            document.getElementById('previewLocation').textContent = data.location || 'N/A';
+            document.getElementById('previewRemarks').textContent = data.remarks || 'No remarks';
+
+            // Calculate and display readings
+            const prevReading = data.previousReading || 'N/A';
+            const currReading = data.currentReading || 'N/A';
+            const distance = (data.currentReading && data.previousReading) ? 
+                (parseFloat(data.currentReading) - parseFloat(data.previousReading)) + ' km' : 'N/A';
+
+            document.getElementById('previewPreviousReading').textContent = prevReading + (prevReading !== 'N/A' ? ' km' : '');
+            document.getElementById('previewCurrentReading').textContent = currReading + (currReading !== 'N/A' ? ' km' : '');
+            document.getElementById('previewDistance').textContent = distance;
+
+            // Show preview and hide form
+            document.querySelector('.fuel-bill-form').style.display = 'none';
+            document.getElementById('billPreview').classList.add('active');
+
+            // Scroll to preview
+            document.getElementById('billPreview').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-IN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        function downloadBill() {
+            alert('PDF download functionality would be implemented here. In a real application, this would generate and download a PDF of the bill.');
+        }
+
+        function printBill() {
+            const printContent = document.getElementById('billPreview').innerHTML;
+            const originalContent = document.body.innerHTML;
+            
+            document.body.innerHTML = `
+                <div style="padding: 20px; font-family: Arial, sans-serif;">
+                    ${printContent}
+                </div>
+            `;
+            
+            window.print();
+            document.body.innerHTML = originalContent;
+            location.reload(); // Reload to restore functionality
+        }
+
+        function editBill() {
+            document.querySelector('.fuel-bill-form').style.display = 'block';
+            document.getElementById('billPreview').classList.remove('active');
+            document.querySelector('.fuel-bill-form').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
