@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Online Bill Generator - Generate professional bills, receipts and invoices quickly and securely">
+    <title>Online Bill Generator | Rent Receipt Generator</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <div class="container">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text">
+                <strong>Alert:</strong> billgenerator.in is the original and trusted platform for generating bills, serving over 0.3M users and generating more than 1M bills. Recently, several lookalike sites have surfaced, copying our concept and even our design. We want to remind our users to be cautious and ensure they are on the official website.
+            </span>
+            <button class="alert-close" onclick="closeAlert()">&times;</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/" class="logo">Bill Generator</a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link">Fuel Bill</a></li>
+                    <li><a href="#" class="nav-link">Driver Salary</a></li>
+                    <li><a href="#" class="nav-link">Daily Helper Bill</a></li>
+                    <li><a href="#" class="nav-link">Rent Receipt</a></li>
+                    <li><a href="#" class="nav-link">Book Invoice</a></li>
+                    <li><a href="#" class="nav-link">Internet Bill</a></li>
+                    <li><a href="#" class="nav-link">Restaurant Bill</a></li>
+                    <li><a href="#" class="nav-link">LTA Receipt</a></li>
+                    <li><a href="#" class="nav-link">E-Com Invoice</a></li>
+                    <li><a href="#" class="nav-link">General Bill</a></li>
+                    <li><a href="#" class="nav-link">Recharge Receipt</a></li>
+                    <li><a href="#" class="nav-link">Medical Bill</a></li>
+                    <li><a href="#" class="nav-link">Stationary Bill</a></li>
+                    <li><a href="#" class="nav-link">Cab & Travel Bill</a></li>
+                    <li><a href="#" class="nav-link">Mart Bill</a></li>
+                    <li><a href="#" class="nav-link">Gym Bill</a></li>
+                    <li><a href="#" class="nav-link">Hotel Bill</a></li>
+                    <li><a href="#" class="nav-link">News Paper Bill</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Accurate, fast and secure Bill Generator</h1>
+                    <p class="hero-subtitle">Welcome to the Bill Generator, trusted by thousands of people. Bill Generator lets you quickly make receipts, bills and invoices with our attractive template straight from your web browser.</p>
+                    <p class="hero-highlight">Did you know that Bill Generator lets you generate an <strong>Unlimited Number of Bills?</strong></p>
+                    <div class="hero-cta">
+                        <a href="fuel-bill/template1.html" class="btn btn-primary">Try it Free</a>
+                        <span class="cta-note">Get 10 free credits</span>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/img/banner/1.png" alt="Online bill generator background" class="hero-bg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client History Section -->
+    <section class="client-history">
+        <div class="container">
+            <h2 class="section-title">Client History</h2>
+            <p class="section-subtitle">Know more about client satisfaction</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <img src="assets/img/tab/Asset6.png" alt="talk box" class="stat-icon">
+                    <div class="stat-number" data-target="381900">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-card">
+                    <img src="assets/img/tab/Asset8.png" alt="people gathered" class="stat-icon">
+                </div>
+                <div class="stat-card">
+                    <img src="assets/img/tab/Asset7.png" alt="archive" class="stat-icon">
+                    <div class="stat-number" data-target="1244822">0</div>
+                    <div class="stat-label">Generated Bills</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Here's what our users are saying about us</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <img src="assets/img/user-avatar.png" alt="User avatar" class="testimonial-avatar">
+                    <h4 class="testimonial-name">Kenny Gupta</h4>
+                    <p class="testimonial-date">June 10, 2024</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">Yes, Its an easy hacky way to get things done. No need to save ink bills. Fill your details and keep it forever</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="assets/img/user-avatar.png" alt="User avatar" class="testimonial-avatar">
+                    <h4 class="testimonial-name">Dgupta</h4>
+                    <p class="testimonial-date">June 1, 2024</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">Yes, it's a great platform to generate the travel bills</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="assets/img/user-avatar.png" alt="User avatar" class="testimonial-avatar">
+                    <h4 class="testimonial-name">Prashant Thanekar</h4>
+                    <p class="testimonial-date">June 1, 2024</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">Yes it really a good one. Please use it all</p>
+                </div>
+            </div>
+            <button class="btn btn-secondary show-more-btn">Show More</button>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <div class="container">
+            <h2 class="section-title">Welcome to the Ultimate <em>Bill Generator</em> Hub!</h2>
+            <div class="intro-content">
+                <p>Effortlessly streamline your invoicing and receipt creation with our versatile suite of online tools. Whether you're a small business owner, a freelancer, or simply looking for a hassle-free way to generate various types of bills, we've got you covered. Our platform offers a wide range of templates to meet your diverse invoicing needs, including an Amazon Invoice Generator, Cab Invoice Generator, and even a Gym Bill Generator.</p>
+                
+                <p>Tired of manually creating invoices for driver salaries, maintenance expenses, or medical services? Look no further. Our Bill Generator is designed to make your billing process quick and efficient. Generate professional-looking invoices with just a few clicks, saving you valuable time and ensuring accuracy. For businesses in the transportation industry, our Online Taxi Bill Generator is tailored to meet the unique needs of cab operators. Create detailed and organized receipts for every trip effortlessly, improving your record-keeping and client communication.</p>
+                
+                <p>Whether you run a restaurant, own a gym, or manage a stationary store, our platform caters to a wide range of industries. The Restaurant Receipt Generator, Gym Bill Generator, and Stationary Bill Generator provide customizable templates to suit the specific requirements of your business. Worried about the complexity of online billing? Fret not! Our user-friendly interface ensures a seamless experience for both beginners and experienced users. The Online Bill Generator simplifies the entire process, allowing you to focus on what matters most – your business.</p>
+                
+                <p>Join the ranks of satisfied users who have revolutionized their invoicing process with our platform. Say goodbye to manual calculations and tedious paperwork. Start generating professional invoices and receipts effortlessly with our Online Bill Generator today!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bill Categories Section -->
+    <section class="bill-categories">
+        <div class="container">
+            <h2 class="section-title">Make sure you get required bill</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <h3>Fuel Bill</h3>
+                    <p>Track your fuel expenses by creating invoices with precise mileage and cost information.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Driver Salary</h3>
+                    <p>Effortlessly produce salary receipts for your drivers. Ensure transparency and compliance.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Internet Invoice</h3>
+                    <p>Create detailed internet bill receipts, including your subscription and usage charges. Keep your internet expenses in check.</p>
+                </div>
+                <div class="category-card">
+                    <h3>LTA Receipt</h3>
+                    <p>Create Leave Travel Allowance (LTA) bills for your employees. Streamline the process and maintain compliance.</p>
+                </div>
+                <div class="category-card">
+                    <h3>E-Com Invoice</h3>
+                    <p>Create professional invoices for your E-Com transactions with ease. Accurately capture all your order details and ensure smooth bookkeeping.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Medical Bill</h3>
+                    <p>Keep track of healthcare expenses with our medical bill generator. Easily create receipts for insurance claims and personal records.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Rent Receipt</h3>
+                    <p>Generate rent receipts for your tenants or as a tenant, ensuring your rent payments are well-documented and compliant.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Book Invoice</h3>
+                    <p>For bookstores or individuals selling books, create professional receipts for your customers, complete with book details.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Restaurant Bill</h3>
+                    <p>Generate restaurant receipts for your customers. Customize them with your branding and itemize the charges.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Recharge Receipt</h3>
+                    <p>Ensure your recharge service payments are accurately documented with our recharge invoice template. Customizable to suit your provider.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Stationary Bill</h3>
+                    <p>Stay organized in your office or business by generating invoices for stationery and office supplies.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Cab & Travel Bill</h3>
+                    <p>For taxi drivers and ride-sharing services, generate invoices for your passengers quickly and efficiently. Keep track of your earnings effortlessly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Check our Pricing</h2>
+            <p class="section-subtitle">The smartest way to generate your bill. Our platform provides you the best receipts that you need for free.</p>
+            <div class="pricing-card">
+                <div class="pricing-info">
+                    <div class="pricing-credits">105 bills</div>
+                    <p class="pricing-note">Our minimum purchase size is 105 credits</p>
+                    <div class="pricing-total">
+                        <span class="pricing-label">Your total</span>
+                        <span class="pricing-amount">₹100</span>
+                    </div>
+                </div>
+                <div class="pricing-cta">
+                    <a href="fuel-bill/template1.html" class="btn btn-primary">Get started Free</a>
+                    <span class="cta-note">Get 10 free credits</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Bill Generator Section -->
+    <section class="why-bill-generator">
+        <div class="container">
+            <h2 class="section-title">Why Bill Generator?</h2>
+            <p class="section-subtitle">You want to generate perfect bills. We are here to help you achieve them.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Easy To Use</h3>
+                    <p>Easy to use platform for anyone to generate variety of bills required in day to day life</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Send Receipts in 10 sec</h3>
+                    <p>Hassle free delivery of PDF receipt directly to user's inbox within 10 seconds of generation</p>
+                </div>
+                <div class="feature-card">
+                    <h3>24/7 Customer Service</h3>
+                    <p>Reach out to us anytime via chat, email or phone. Our support team are here to guide you to generate bills.</p>
+                </div>
+            </div>
+            <div class="feature-cta">
+                <a href="fuel-bill/template1.html" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Know More by FAQ</h2>
+            <p class="section-subtitle">The Bill Generator is the simple tool that create simple bill with proper format.</p>
+            <div class="faq-content">
+                <div class="faq-image">
+                    <img src="assets/img/FAQ/integration-img.png" alt="a happy man pointing to his mobile phone" class="faq-img">
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h4>Can I save my invoice details?</h4>
+                        <p>Yes, you can access all previously generated invoices in the My Account section.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Do we need account to access?</h4>
+                        <p>Yes, you need an account.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is my data safe?</h4>
+                        <p>Absolutely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>The best bill generation starts here</h2>
+                    <div class="cta-buttons">
+                        <a href="fuel-bill/template1.html" class="btn btn-primary">Try It Free</a>
+                        <span class="cta-note">Get 10 free credits</span>
+                    </div>
+                </div>
+                <div class="cta-image">
+                    <img src="assets/img/man.png" alt="man-img" class="cta-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="assets/img/logo.png" alt="Bill Generator Logo" class="footer-logo">
+                    <p>© Midpoint Solutions Pvt Ltd.</p>
+                    <p>All rights reserved 2025</p>
+                    <p class="made-in-india">Made with ❤️ in India</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Useful links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Fuel Bill</a></li>
+                        <li><a href="#">Driver Salary</a></li>
+                        <li><a href="#">Daily Helper Bill</a></li>
+                        <li><a href="#">Rent Receipt</a></li>
+                        <li><a href="#">Book Invoice</a></li>
+                        <li><a href="#">Internet Invoice</a></li>
+                        <li><a href="#">Restaurant Bill</a></li>
+                        <li><a href="#">LTA Receipt</a></li>
+                        <li><a href="#">E-Com Invoice</a></li>
+                        <li><a href="#">General Bill</a></li>
+                        <li><a href="#">Recharge Receipt</a></li>
+                        <li><a href="#">Medical Bill</a></li>
+                        <li><a href="#">Stationary Bill</a></li>
+                        <li><a href="#">Cab & Travel Bill</a></li>
+                        <li><a href="#">Mart Bill</a></li>
+                        <li><a href="#">Gym Bill</a></li>
+                        <li><a href="#">Hotel Bill</a></li>
+                        <li><a href="#">News Paper Bill</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Pricing</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Pay as you go</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Career</a></li>
+                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy & Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Koramangala,</p>
+                    <p>Bangalore, 560034 India</p>
+                    <p>Mail: <a href="mailto:portal@billgenerator.in">portal@billgenerator.in</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
